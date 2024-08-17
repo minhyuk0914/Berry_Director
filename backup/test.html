@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+
+    <script type="text/javascript">
+	window.onload = function() {
+	    //제출하기 clickListener
+		document.getElementById("submit").onclick = function() { // on click
+		    loadFileAsText()
+		}
+	}
+	//HTML File -> show table
+	function loadFileAsText(){
+        var fileToLoad = document.getElementById("fileToLoad").files[0];
+        var fileReader = new FileReader();
+        fileReader.onload = function(fileLoadedEvent){
+            //불러온 텍스트 파일
+            var textFromFileLoaded = fileLoadedEvent.target.result;
+            //html 형식
+            var html = new DOMParser().parseFromString(textFromFileLoaded, "text/html");
+            //table 추출
+            var table = html.querySelector("table");
+            //원문 html 문자열
+            var htmlString = html.documentElement.outerHTML
+            //테이블 표시
+            document.getElementById("disp").appendChild(table);
+            //원문 표시
+            document.getElementById("html").innerHTML = htmlString
+
+<!--            post_to_url('/handle_data',html,POST)-->
+
+        };
+        fileReader.readAsText(fileToLoad, "UTF-8");
+    }
+
+
+    </script>
+
+</head>
+<body>
+<hr>
+<h1>Table</h1>
+<!--<form action="/handle_data" method="POST">-->
+    <input type="file" id="file" accept="html/*" name="table"/>
+    <button id="submit">제출하기</button>
+<!--</form>-->
+
+<br>
+<br>
+<hr>
+<div id="disp">표 출력</div>
+<h2>Question</h2>
+  <form action="/post" method="post">
+        <p>질문입력해주세요 : <input type="text" name="test"></p>
+        <input type="submit" value="질문하기">
+    </form>
+<br>
+<br>
+<hr>
+<h2>Answer</h2>
+<div id="html">원문 출력</div>
+
+</body>
+</html>

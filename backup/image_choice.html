@@ -1,0 +1,146 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .strawberry{
+  
+  
+  display: flex;
+      width: 675px;
+      height: 100px;
+      flex-direction: column;
+      justify-content: center;
+      flex-shrink: 0;
+  
+      color: #C11D1D;
+      text-align: center;
+      font-family: Inter;
+      font-size: 96px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+  
+      text-decoration: none;}
+  
+  .strawberry:hover {
+  color: #ca8989;
+  transform: scale(1.1);
+  transition-duration: 0.4s;}
+  
+      li {
+        list-style: none;
+      }
+  
+      img {
+        width: 450px;
+        height: 450px;
+        margin: 7.5px;
+      }
+  
+      .real-upload {
+        display: none;
+      }
+  
+      .upload {
+        width: 1440px;
+        height: 650px;
+        background-color: rgb(228, 228, 228);
+        position: absolute;
+        left: 650px;
+        top: 300px;
+      }
+  
+      .image-preview {
+        width: 960px;
+        height: 480px;
+        display: flex;
+        gap: 20px; 
+        position: absolute;
+        left: 550px;
+        top: 275px;
+      }
+  
+  
+      .button{
+          background-color: #fdfcee;
+          width: 600px; 
+          height: 70px; 
+          flex-shrink: 0; 
+          border-radius: 30px; 
+          position: absolute; 
+          left: 750px; 
+          top: 800px;}
+
+      .font{
+        font-family: 'Jua', sans-serif;
+      }
+          
+      .button:hover{
+          background-color: rgb(245, 241, 205);
+          color: white;
+          transform: scale(1.03);
+          transition-duration: 0.4s;}
+  
+      .upload::-webkit-scrollbar {
+          width: 6px;  /* 스크롤바의 너비 */}
+  
+      .upload::-webkit-scrollbar-thumb {
+        height: 30%; /* 스크롤바의 길이 */
+        background: #ee8989; /* 스크롤바의 색상 */
+      
+        border-radius: 10px;}
+  
+      .upload::-webkit-scrollbar-track {
+        background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/}
+  
+    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+  
+  </head>
+  
+  <body>
+      <br>
+        <h1><a text-decoration-line href='{{url_for('index')}}' class="strawberry">Strawberry</a></h1>
+      </br>
+      
+    <input type="file" class="real-upload" accept="image/*" required multiple>
+  
+   
+  
+
+  <div>
+    
+      <p class="font" style="width: 575px; height: 120px; left: 851px; top: 245px; position: absolute; text-align: center; 
+      font-size: 42px;  font-weight: 500; word-wrap: break-word">
+      분석이 모두 끝났습니다.
+      </p>
+
+       <p class="font" style="width: 575px; height: 120px; left: 888px; top: 325px; position: absolute; text-align: center; 
+        font-size: 42px;  font-weight: 500; word-wrap: break-word">
+        사진을 클릭하여 세부 정보를
+       </p>
+
+       <p class="font" style="width: 575px; height: 120px; left: 770px; top: 395px; position: absolute; text-align: center; 
+        font-size: 42px;  font-weight: 500; word-wrap: break-word">
+        확인해주세요.
+       </p>
+       
+      </div>    
+
+      <form action="/information" method="POST" enctype="multipart/form-data">
+
+        {% if True %}
+        <a href='{{url_for('information')}}'>
+         <img class="Rectangsle10" style="border: 2px solid rgb(216, 135, 135); width: 450px; height: 400px; left: 425px; top: 245px; position: absolute" 
+         src="{{url_for('static', filename='images/strawberry/'+user_img_preview)}}" />
+        </a>  
+        {% endif %}
+    </form>
+
+      <img style="width: 100px; height: 100px; left: 930px; top: 520px; position: absolute;"
+       src="https://cdn-icons-png.flaticon.com/512/3236/3236910.png"/>
+  </body>

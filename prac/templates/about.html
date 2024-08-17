@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Berry Director</title>
+	<link rel = "shortcut icon" href = "{{url_for('static', filename='strawberry_icon.png')}}">
+	
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <style>
+      .size{
+        height: 26rem;
+        object-fit: cover;
+      }
+      
+      .bold{font-weight: bold;
+      }
+      .font_400 { font-weight: 450; }
+
+      @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@300&family=Jua&family=Noto+Sans+KR:wght@600&display=swap');
+      .sans{
+        font-family: 'Black Han Sans', sans-serif;
+      }
+
+      .jua{
+        font-family: 'Jua', sans-serif;
+      }
+      .gothic{
+        font-family: 'Gothic A1', sans-serif;
+      }
+      .noto{
+        font-family: 'Noto Sans KR', sans-serif;      
+      }
+
+
+    </style>
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{url_for('index')}}">Berry Director</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">About</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    
+    
+    <div class="container row" style="float: none; margin: 100 auto;">
+        <div class="col" style="float: none; margin: 0 auto;">
+            <div class="card" style="max-width: 1280px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="https://miro.medium.com/v2/resize:fit:1400/1*RUEV3Kbxl8_vF0KumHSZkA.png" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">정보 페이지입니다.</h5>
+                      <p class="card-text">YOLOV8을 이용한~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+                      <p class="card-text"><small class="text-muted">~~~~~~~~~~~~~~~~</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+  </body>
+</html>

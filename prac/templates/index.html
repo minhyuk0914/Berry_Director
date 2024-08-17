@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Berry Director</title>
+	<link rel = "shortcut icon" href = "{{url_for('static', filename='strawberry_icon.png')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <style>
+      .size{
+        height: 26rem;
+        object-fit: cover;
+      }
+      
+      .bold{font-weight: bold;
+      }
+      .font_400 { font-weight: 450; }
+
+      @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@300&family=Jua&family=Noto+Sans+KR:wght@600&display=swap');
+      .sans{
+        font-family: 'Black Han Sans', sans-serif;
+      }
+
+      .jua{
+        font-family: 'Jua', sans-serif;
+      }
+      .gothic{
+        font-family: 'Gothic A1', sans-serif;
+      }
+      .noto{
+        font-family: 'Noto Sans KR', sans-serif;      
+      }
+
+
+    </style>
+
+  </head>
+  <body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{url_for('index')}}">Berry Director</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{{url_for('about')}}">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+      <div class="row m-5 gy-5">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col-4"></div>
+      </div>
+      
+      <div class="container row" style="float: none; margin: 100 auto;">
+        
+        <div class="col" style="float: none; margin: 0 auto;">
+          <div class="card" style="width: 26rem;">
+            <img src="{{url_for('static', filename='think.jpg')}}" class="card-img-top size" alt="...">
+            <div class="card-body">
+              <h4 class="card-title bold noto" style="font-size: 1.45rem;">안녕하세요!</h4>
+              <p class="card-text gothic">여러분을 도와주는 Berry Director입니다!</p>
+              <p class="card-text gothic">저희는 누구나 손쉽게 딸기가 얼마나 익은지 알 수 있는 서비스를 제공합니다.</p>
+              <p class="card-text gothic">여러분의 딸기가 잘 익었는지 확인해보세요!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card" style="width: 26rem;">
+            <img src="{{url_for('static', filename='discuss.jpg')}}" class="card-img-top size" alt="...">
+            <div class="card-body">
+              <h4 class="card-title bold noto" style="font-size: 1.45rem;">어떻게 사용하나요?</h4>
+              <p class="card-text gothic">사용방법은 아주 간단합니다.</p>
+              <p class="card-text gothic">여러분이 원하는 이미지를 준비하세요.</p>
+              <p class="card-text gothic">이미지가 준비됐다면 저희 사이트에 업로드해주세요. 그리고 잠시만 기다린다면 끝입니다!</p>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="col">
+          <div class="card" style="width: 26rem; height: 36.4rem;">
+            <img src="{{url_for('static', filename='farmer.jpg')}}" class="card-img-top size" alt="...">
+            <div class="card-body">
+              <h4 class="card-title bold noto" style="font-size: 1.45rem;">이제 시작해보세요!</h4>
+              <p class="card-text gothic">자 이제 준비가 되셨다면 직접 해보실 차례입니다!</p>
+              <p class="card-text gothic">버튼을 클릭하여 다음으로 넘어가주세요!</p>
+              
+              <form action="/image_upload">
+                <div class="d-grid gap-2 col-6 mx-auto my-2">
+                  <button class="btn btn-primary" type="button" onclick="location.href='/image_upload'">Button</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+  </body>
+</html>

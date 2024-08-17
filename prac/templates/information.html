@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Berry Director</title>
+		<link rel = "shortcut icon" href = "{{url_for('static', filename='strawberry_icon.png')}}">
+        <style>
+           @import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@600&display=swap');
+
+          body{
+            font-family: 'Jua', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;          
+                } 
+
+          .bold{font-weight: bold;
+           }
+          .font_400 { font-weight: 450; }
+
+          @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@300&family=Jua&family=Noto+Sans+KR:wght@600&display=swap');
+         .sans{
+           font-family: 'Black Han Sans', sans-serif;
+          }
+
+         .jua{
+            font-family: 'Jua', sans-serif;
+          }
+          .gothic{
+           font-family: 'Gothic A1', sans-serif;
+          }
+         .noto{
+           font-family: 'Noto Sans KR', sans-serif;      
+         }
+        </style>
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+    </head>
+
+    <body>
+     
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{{url_for('index')}}">Berry Director</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                  </li>
+                  <li class="nav-item">
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">어떤 과실이 익은 건가요?</button>             
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+
+        <div class="row">
+          <div class="col">
+            <br>
+          </div>
+        </div>
+        
+        <div class="row" style="float: none; margin: 100 auto;">
+                <div class="col-lg-6 col-sm-10" style="float: none; margin: 0 auto;">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+
+                        <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          {% if (img_len>=2) %}
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          {% endif %}    
+                          {% if (img_len>=3) %}
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                          {% endif %} 
+                          {% if (img_len>=4) %}
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                          {% endif %} 
+                          {% if (img_len>=5) %}
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                          {% endif %} 
+                        </div>
+
+
+                        <div class="carousel-inner">
+
+                          <div class="carousel-item active" style="border-radius: 2%; background-color: rgb(252, 241, 241);">
+                            <figure class="image is-4by3">
+                              <img src="{{url_for('static', filename='images/runs/detect/predict/'+user_img_name[0])}}">
+                            </figure>                          
+
+                            <div class="row m-5">                 
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='total.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">모든 딸기:</p>
+                                <p class="noto">{{total[0]}}개</p>
+                              </div>
+
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='ripe.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">익은 딸기:</p>
+                                <p class="noto">{{ripe[0]}}개</p>
+                              </div>
+
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='leaves.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">안 익은 <br>딸기: {{no_ripe[0]}}개</p>
+                              </div>
+
+                              <div class="col">
+                                  <img class="is-rounded" src="{{url_for('static', filename='images/qrcode/'+user_img_name[0])}}">
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">QR 코드로 확인해보세요!</p>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          {% if (img_len>=2) %}
+                          <div class="carousel-item" style="border-radius: 2%; background-color: rgb(252, 241, 241);">
+                            <figure class="image is-4by3">
+                              <img src="{{url_for('static', filename='images/runs/detect/predict/'+user_img_name[1])}}">
+                            </figure>                          
+
+                            <div class="row m-5">                 
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='total.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">모든 딸기:</p>
+                                <p class="noto">{{total[1]}}개</p>
+                              </div>
+
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='ripe.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">익은 딸기:</p>
+                                <p class="noto">{{ripe[1]}}개</p>
+                              </div>
+
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='leaves.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">안 익은 <br>딸기: {{no_ripe[1]}}개</p>
+
+                              </div>
+
+                              <div class="col">
+                                <img class="is-rounded" src="{{url_for('static', filename='images/qrcode/'+user_img_name[1])}}">
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">QR 코드로 확인해보세요!</p>
+                              </div>
+
+                            </div>       
+                          </div>
+                          {% endif %}
+
+                          {% if (img_len>=3) %}                   
+                          <div class="carousel-item" style="border-radius: 2%; background-color: rgb(252, 241, 241);">
+                            <figure class="image is-4by3">
+                              <img src="{{url_for('static', filename='images/runs/detect/predict/'+user_img_name[2])}}">
+                            </figure>                          
+
+                            <div class="row m-5">                 
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='total.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">모든 딸기:</p>
+                                <p class="noto">{{total[2]}}개</p>
+                              </div>
+
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='ripe.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">익은 딸기:</p>
+                                <p class="noto">{{ripe[2]}}개</p>
+                              </div>
+
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='leaves.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">안 익은 <br>딸기: {{no_ripe[2]}}개</p>
+
+                              </div>
+
+                              <div class="col">
+                                <img class="is-rounded" src="{{url_for('static', filename='images/qrcode/'+user_img_name[2])}}">
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">QR 코드로 확인해보세요!</p>
+                              </div>
+
+
+
+                            </div>                                           
+                          </div>
+                          {% endif %}
+
+                          {% if (img_len>=4) %}                   
+                          <div class="carousel-item" style="border-radius: 2%; background-color: rgb(252, 241, 241);">
+                            <figure class="image is-4by3">
+                              <img src="{{url_for('static', filename='images/runs/detect/predict/'+user_img_name[3])}}">
+                            </figure>                          
+
+                            <div class="row m-5">                 
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='total.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">모든 딸기:</p>
+                                <p class="noto">{{total[3]}}개</p>
+                              </div>
+
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='ripe.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">익은 딸기:</p>
+                                <p class="noto">{{ripe[3]}}개</p>
+                              </div>
+
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='leaves.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">안 익은 <br>딸기: {{no_ripe[3]}}개</p>
+
+                              </div>
+
+                              <div class="col">
+                                <img class="is-rounded" src="{{url_for('static', filename='images/qrcode/'+user_img_name[3])}}">
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">QR 코드로 확인해보세요!</p>
+                             </div>
+
+                            </div>
+                          </div>
+                          {% endif %}
+
+                          {% if (img_len>=5) %}                   
+                          <div class="carousel-item" style="border-radius: 2%; background-color: rgb(252, 241, 241);">
+                            <figure class="image is-4by3">
+                              <img src="{{url_for('static', filename='images/runs/detect/predict/'+user_img_name[4])}}">
+                            </figure>                          
+
+                            <div class="row m-5">                 
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='total.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">모든 딸기:</p>
+                                <p class="noto">{{total[4]}}개</p>
+                              </div>
+
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='ripe.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">익은 딸기:</p>
+                                <p class="noto">{{ripe[4]}}개</p>
+                              </div>
+
+                              <div class="col">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="{{url_for('static', filename='leaves.jpg')}}">
+                                </figure>
+                              </div>
+
+                              <div class="col">
+                                <p class="noto">안 익은 <br>딸기: {{no_ripe[4]}}개</p>
+
+                              </div>
+                              
+                              <div class="col">
+                                <img class="is-rounded" src="{{url_for('static', filename='images/qrcode/'+user_img_name[4])}}">
+                              </div>
+
+                             <div class="col">
+                                <p class="noto">QR 코드로 확인해보세요!</p>
+                             </div>
+
+
+
+                            </div>                          
+                          </div>
+
+                        </div>
+                        {% endif %}
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                        
+                      </div>
+                </div>
+
+
+
+
+    
+            </div>
+
+            
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title bold noto" id="offcanvasRightLabel">어떤 과실이 익은 건가요?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body" style="float: none; margin: 100 auto;">
+                <div class="col" style="float: none; margin: 0 atuo;">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{{url_for('static', filename='berry_noripe.jpg')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">누가 봐도 덜 익은 건 덜 익음</p>
+                    </div>
+                  </div>
+  
+                  <div class="card" style="width: 18rem;">
+                    <img src="{{url_for('static', filename='berry_halfripe.jpg')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">절반 정도 익는 것도 덜 익음</p>
+                    </div>
+                  </div>
+                  
+                  <div class="card" style="width: 18rem;">
+                    <img src="{{url_for('static', filename='berry_fullripe.jpg')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">완전히 익어야 익은 상태</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>
